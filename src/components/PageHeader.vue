@@ -1,0 +1,45 @@
+<template>
+  <v-app-bar
+      app
+      color="teal"
+      dark
+  >
+    <v-container>
+      <div class="d-flex align-center">
+        <h3 class="font-weight-bold ">TaskAgile</h3>
+        <!--<h3 class="font-weight-bold ">User: {{user.name}}</h3>-->
+        <user-header  v-bind:user="user" v-on:logout="logout"/>
+        <!--<v-btn v-on:click="logout">Logout</v-btn>-->
+      </div>
+    </v-container>
+  </v-app-bar>
+
+</template>
+
+<script>
+import { mapGetters } from 'vuex'
+import meService from "@/services/me";
+import authService from "@/services/authentification";
+import axios from "axios";
+import UserHeader from "@/components/ui/UserHeader";
+export default{
+  name: "PageHeader",
+  data(){
+    return {
+      username : ''
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'user',
+      'hasBoards',
+      'personalBoards',
+      'teamBoards'
+    ])
+  },
+}
+</script>
+
+<style scoped>
+
+</style>
