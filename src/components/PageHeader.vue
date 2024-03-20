@@ -37,6 +37,31 @@ export default{
       'teamBoards'
     ])
   },
+  methods : {
+    logout() {
+      authService.logout()
+          .then((response) => {
+            window.location.reload();
+          })
+          .catch((error) => {
+            console.log(error)
+          });
+    },
+    async getMe(){
+      try {
+        await this.$store.dispatch('getUser')
+        console.log('test')
+        await this.$store.dispatch('getTeams')
+        await this.$store.dispatch('getBoards')
+      }catch (e) {
+        console.log(e)
+      }
+    }
+  },
+
+  mounted () {
+    this.getMe().then().catch()
+  }
 }
 </script>
 
