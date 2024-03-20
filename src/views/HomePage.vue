@@ -13,7 +13,9 @@
 
           <board-cart v-bind:board="board" v-on:openBoard = openBoard> </board-cart>
         </v-col>
-
+        <v-col md = "2">
+          <create-board-modal v-bind:team-id="0"/>
+        </v-col>
       </v-row>
     </v-container>
 
@@ -30,7 +32,9 @@
           >
             <board-cart v-bind:board="board" v-on:openBoard = openBoard> </board-cart>
           </v-col>
-
+          <v-col md = "2">
+            <create-board-modal v-bind:team-id="0"/>
+          </v-col>
         </v-row>
       </v-container>
     </div>
@@ -41,10 +45,11 @@
 import PageHeader from "@/components/PageHeader.vue";
 import BoardCart from "@/components/BoardCart.vue";
 import {mapGetters} from "vuex";
+import CreateBoardModal from "@/components/modals/CreateBoardModal.vue";
 
 export default {
 name: "HomePage",
-  components: {BoardCart, PageHeader},
+  components: {CreateBoardModal, BoardCart, PageHeader},
 
   data () {
     return {
