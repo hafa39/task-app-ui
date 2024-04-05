@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import PageHeader from "@/components/PageHeader.vue";
+import PageHeader from "@/components/PageHeaderNotUsed.vue";
 import BoardCart from "@/components/BoardCart.vue";
 import {mapGetters} from "vuex";
 import CreateBoardModal from "@/components/modals/CreateBoardModal.vue";

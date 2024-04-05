@@ -121,7 +121,7 @@
 </template>
 
 <script>
-import PageHeader from "@/components/PageHeader";
+import PageHeader from "@/components/PageHeaderNotUsed.vue";
 import draggable from 'vuedraggable'
 import boardService from "@/services/boards";
 import cardListService from "@/services/card-lists";
