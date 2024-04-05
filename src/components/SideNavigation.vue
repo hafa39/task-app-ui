@@ -34,7 +34,9 @@
 </template>
 
 <script>
-import meService from "@/services/me"
+
+
+import meService from "@/services/me";
 import authService from "@/services/authentification";
 import {mapGetters} from "vuex";
 export default {

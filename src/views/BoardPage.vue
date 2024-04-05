@@ -1,6 +1,5 @@
 <template>
   <div>
-    <page-header/>
     <div class="board">
       <v-container>
         <div class="board-header">
@@ -121,7 +120,6 @@
 </template>
 
 <script>
-import PageHeader from "@/components/PageHeaderNotUsed.vue";
 import draggable from 'vuedraggable'
 import boardService from "@/services/boards";
 import cardListService from "@/services/card-lists";
@@ -131,10 +129,12 @@ import cardService from "@/services/cards";
 import CardModal from "@/components/modals/CardModal";
 import CardRemoveModal from "@/components/modals/CardRemoveModal";
 import UserAvatar from "@/components/ui/UserAvatar";
+import SideNavigation from "@/components/SideNavigation.vue";
+import PageHeader from "@/components/PageHeader.vue";
 
 export default {
 name: "BoardPage",
-  components: {UserAvatar, CardRemoveModal, CardModal, AddMemberModal, PageHeader,draggable },
+  components: {SideNavigation, UserAvatar, CardRemoveModal, CardModal, AddMemberModal, PageHeader,draggable },
   beforeRouteEnter (to, from, next) {
     next(vm => {
       vm.loadBoard()

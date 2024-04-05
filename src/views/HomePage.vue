@@ -1,6 +1,4 @@
 <template>
-  <page-header/>
-
   <v-container fluid class=" blue-grey darken-4 mt-5 ">
 
     <v-container fluid class=" blue-grey darken-4 mt-5 ">
@@ -42,10 +40,11 @@
 </template>
 
 <script>
-import PageHeader from "@/components/PageHeaderNotUsed.vue";
+
 import BoardCart from "@/components/BoardCart.vue";
-import {mapGetters} from "vuex";
 import CreateBoardModal from "@/components/modals/CreateBoardModal.vue";
+import PageHeader from "@/components/PageHeader.vue";
+import {mapGetters} from "vuex";
 
 export default {
 name: "HomePage",

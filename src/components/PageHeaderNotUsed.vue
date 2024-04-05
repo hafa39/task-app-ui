@@ -23,7 +23,7 @@ import authService from "@/services/authentification";
 import axios from "axios";
 import UserHeader from "@/components/ui/UserHeader.vue";
 export default{
-  name: "PageHeader",
+  name: "PageHeaderNotUsed",
   components: {UserHeader},
   data(){
     return {
