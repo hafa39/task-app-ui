@@ -1,37 +1,26 @@
-import meService from "@/services/me";
-import excService from "@/services/api_exception_handler";
-
-export const getUser = async ({ commit }) => {
-    try {
-        const response = await meService.getUser();
-        commit('updateUser', response.data);
-    } catch (e) {
-        await excService.handleExc(e)
-    }
+export const updateUser = ({commit},user) => {
+    commit('updateUser', user)
 }
 
-export const getTeams = async ({commit}) =>{
-    try {
-        const response = await meService.getTeams();
-        commit('updateTeams',response.data)
-    }catch(e){
-        console.log(e)
-    }
+export const updateUserAvatar = ({commit},avatar) => {
+    commit('updateUserAvatar', avatar)
 }
 
-export const getBoards = async ({commit}) =>{
-    try {
-        const response = await meService.getBoards();
-        commit('updateBoards',response.data)
-    }catch (e) {
-        console.log(e)
-    }
+export const updateTeams = ({commit},teams) => {
+    commit('updateTeams',teams)
 }
 
-export const addTeam = ({commit},team) => {
-    commit('addTeam', team)
+export const updateBoards = ({commit},boards) =>{
+    commit('updateBoards',boards)
 }
 
 export const addBoard = ({commit},board) => {
-    commit('addBoard', board)
+    commit('addBoard',board)
 }
+export const removeBoard = ({commit},boardId) => {
+    commit('removeBoard',boardId)
+}
+export const addTeam = ({commit},team) =>{
+    commit('addTeam',team)
+}
+

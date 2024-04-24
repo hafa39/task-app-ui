@@ -13,7 +13,7 @@
             <v-col cols="3">
               <h3>Members</h3>
               <div v-for="member in members" v-bind:key="member.id">
-                <user-avatar v-bind:user="member"/>
+                <user-avatar v-bind:user="member" v-bind:avatar="member.avatar"/>
                 <!--<v-avatar color="primary" size="x-small">
                   <span>{{member.shortName}}</span>
                 </v-avatar>-->
@@ -131,6 +131,9 @@ import CardRemoveModal from "@/components/modals/CardRemoveModal";
 import UserAvatar from "@/components/ui/UserAvatar";
 import SideNavigation from "@/components/SideNavigation.vue";
 import PageHeader from "@/components/PageHeader.vue";
+import me from "@/services/me";
+import attachmentService from "@/services/attachments";
+import cardLists from "@/services/card-lists";
 
 export default {
 name: "BoardPage",
@@ -142,11 +145,11 @@ name: "BoardPage",
   },
   data () {
     return {
-
+      showArchived: false ,
       board: { id: 0, name: '', personal: false },
       cardLists: [/* {id, name, cards, cardForm} */],
       team: { name: '' },
-      members: [/* {id, shortName} */],
+      members: [/* {id, shortName} */{id:"",avatar:{dataUrl:""}}],
       addListForm: {
         open: false,
         name: ''
@@ -176,6 +179,16 @@ name: "BoardPage",
       this.board.personal = data.board.personal
       this.board.name = data.board.name
       this.members = data.members
+
+      this.members = this.members.map(member => {
+        member.avatar  = me.getAvatarByUserId(member.userId)
+            .then(response => {
+              member.avatar = response.data
+              attachmentService.createBlobUrl(member.avatar)
+            }).catch(e => member)
+        return member
+      })
+      console.log(this.members)
 
       try {
         response = await cardListService.getCardLists(this.$route.params.boardId)
@@ -210,7 +223,15 @@ name: "BoardPage",
     },
 
     async removeCard(cardId){
-      await cardService.removeCard(cardId)
+      try {
+        await cardService.removeCard(cardId)
+        this.cardLists.forEach(cardList=>{
+          cardList.cards = cardList.cards.filter(card => card.id !== cardId);
+        })
+      }catch (e) {
+        console.log(parser.parse(error.message))
+      }
+
     },
 
     onMemberAdded (member) {

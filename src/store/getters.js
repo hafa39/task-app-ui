@@ -1,5 +1,7 @@
 export const user = state => state.user
 
+export const avatar = state => state.avatar
+
 export const hasBoards = state => {
     return state.boards.length > 0
 }

@@ -7,6 +7,9 @@ const state = {
   user: {
     name: null
   },
+  avatar: {
+    id: null
+  },
   teams: [/* {id, name} */],
   boards: [/* {id, name, description, teamId} */]
 }
