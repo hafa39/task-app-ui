@@ -144,6 +144,8 @@
 
       <v-card-actions>
         <v-spacer></v-spacer>
+        <v-btn v-show="!card.archived" color="green darken-1" text @click="setArchived(true)">Archive</v-btn>
+        <v-btn v-show="card.archived" color="green darken-1" text @click="setArchived(false)">Activate</v-btn>
         <v-btn color="blue darken-1" text @click="close">Close</v-btn>
       </v-card-actions>
     </v-card>
@@ -155,6 +157,7 @@ import cardService from "@/services/cards";
 import attachmentService from "@/services/attachments";
 import { formatDistance } from 'date-fns'
 import {mapGetters} from "vuex";
+import cards from "@/services/cards";
 export default {
   name: "CardModal",
   props: {
@@ -394,6 +397,14 @@ export default {
         this.$refs.fileInput.reset()
         this.showSnackbar('Attachment added.')
       }).catch(error => console.log(error))
+    },
+
+    setArchived(isArchived){
+      cardService.setArchived(this.cardId,isArchived)
+          .then(()=>{
+            this.$emit('archivedChanged', {id: this.cardId, archived: isArchived})
+            this.close()
+          })
     },
 
     showSnackbar(message){

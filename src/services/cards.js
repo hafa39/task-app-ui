@@ -43,6 +43,11 @@ export default {
         return axios.delete("/activities",{ params: {
                 commentId: commentId
             }})
+    },
+
+    setArchived(cardId,isArchived){
+        return axios.put('/cards/'+cardId+"/archived",null,
+            {params: {archived : isArchived }})
     }
 }
 

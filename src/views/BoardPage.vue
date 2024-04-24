@@ -6,6 +6,7 @@
           <v-row>
             <v-col cols="3">
               <h3>Board: {{board.name}}</h3>
+              <v-checkbox label="Show archived" v-model="showArchived" value="true"></v-checkbox>
             </v-col>
             <v-col cols="3">
               <h3></h3>
@@ -44,7 +45,7 @@
                       item-key="id"
                   >
                     <template #item="{element: card}">
-                      <div class="mt-3">
+                      <div class="mt-3" v-show="!card.archived || showArchived">
                         <v-card
                             outlined>
                           <v-card-title>
@@ -61,6 +62,7 @@
                                         v-bind:members="members"
                                         v-on:titleChanged = "updateCardTitle"
                                         v-on:descriptionChanged = "updateCardDescription"
+                                        v-on:archivedChanged = "updateCardArchived"
                             >
 
                             </card-modal>
@@ -403,6 +405,19 @@ name: "BoardPage",
             }
           }))
     },
+
+    updateCardArchived(change){
+      console.log("update card archived")
+      console.log(change)
+      this.cardLists.forEach(list => {
+        list.cards.forEach(card => {
+          if (card.id === change.id){
+            card.archived = change.archived
+          }
+        })
+      })
+    }
+
 
   }
 }
