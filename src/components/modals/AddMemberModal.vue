@@ -87,7 +87,8 @@ export default {
         this.$emit('added', member)
         this.close()
       }).catch(error => {
-        this.errorMessage = error.message
+        console.log(error)
+        this.errorMessage = error.response.data.message
       })
     },
     close () {

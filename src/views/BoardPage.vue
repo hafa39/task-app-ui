@@ -13,12 +13,15 @@
             </v-col>
             <v-col cols="3">
               <h3>Members</h3>
-              <div v-for="member in members" v-bind:key="member.id">
-                <user-avatar v-bind:user="member" v-bind:avatar="member.avatar"/>
-                <!--<v-avatar color="primary" size="x-small">
-                  <span>{{member.shortName}}</span>
-                </v-avatar>-->
-              </div>
+              <v-row>
+                <div v-for="member in members" v-bind:key="member.id">
+                  <user-avatar v-bind:user="member" v-bind:avatar="member.avatar"/>
+                  <!--<v-avatar color="primary" size="x-small">
+                    <span>{{member.shortName}}</span>
+                  </v-avatar>-->
+                </div>
+              </v-row>
+
               <add-member-modal v-bind:boardId="board.id" v-on:added="onMemberAdded"/>
             </v-col>
           </v-row>
@@ -125,7 +128,7 @@
 import draggable from 'vuedraggable'
 import boardService from "@/services/boards";
 import cardListService from "@/services/card-lists";
-import parser from '../../../../Task-agile-cloud-v3/ui/src/utils/error-parser.js'
+import parser from '@/utils/error-parser.js'
 import AddMemberModal from "@/components/modals/AddMemberModal";
 import cardService from "@/services/cards";
 import CardModal from "@/components/modals/CardModal";
@@ -237,7 +240,7 @@ name: "BoardPage",
     },
 
     onMemberAdded (member) {
-      this.members.push(member)
+      this.loadBoard()
     },
 
     addCard (cardList) {
