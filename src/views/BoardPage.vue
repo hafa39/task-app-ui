@@ -88,9 +88,9 @@
                                       :rules="nameRules"
                                       ref="AddCardFormField"
                         ></v-text-field>
-                        <v-btn type="submit" block class="mt-2">Submit</v-btn>
-                        <v-btn color="orange" class="mt-4"  block @click="resetAddCardForm">Reset Form</v-btn>
-                        <v-btn color="error" class="mt-4" @click="closeAddCardForm(cardList)">Cancel</v-btn>
+                        <v-btn icon type="submit" color="primary" class="mr-2" size="small"><v-icon>mdi-plus</v-icon></v-btn>
+                        <v-btn icon color="secondary" class="mr-2" size="small" @click="resetAddCardForm"><v-icon>mdi-refresh</v-icon></v-btn>
+                        <v-btn icon color="error" class="mr-2" size="small" @click="closeAddCardForm(cardList)"><v-icon>mdi-close</v-icon></v-btn>
                       </v-form>
                     </v-sheet>
                   </div>
@@ -109,9 +109,9 @@
                                     ref="AddCardListFormField">
 
                       </v-text-field>
-                      <v-btn type="submit" block class="mt-2">Add List</v-btn>
-                      <v-btn color="orange" class="mt-4"  block @click="resetAddListForm">Reset</v-btn>
-                      <v-btn color="error" class="mt-4" @click="closeAddListForm()">Cancel</v-btn>
+                      <v-btn type="submit" icon color="primary" size="small" class="mr-2"><v-icon>mdi-plus</v-icon></v-btn>
+                      <v-btn icon color="secondary" @click="resetAddListForm" size="small" class="mr-2"><v-icon>mdi-refresh</v-icon></v-btn>
+                      <v-btn icon color="error" @click="closeAddListForm" size="small" class="mr-2"><v-icon>mdi-close</v-icon></v-btn>
                     </v-form>
                   </v-sheet>
                 </div>
