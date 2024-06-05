@@ -6,7 +6,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: hafa39/task-ui
+  IMAGE_NAME: task-ui
   VERSION: latest
 
 jobs:
