@@ -7,7 +7,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: task-app-ui
-  VERSION: latest
+  VERSION: v1
 
 jobs:
   build:
