@@ -20,9 +20,9 @@ jobs:
       - name: Build and push Docker image
         uses: mr-smithers-excellent/docker-build-push@v6
         with:
-          image: ${{ env.IMAGE_NAME }}:${{ env.VERSION }}
+          image: ${{ env.IMAGE_NAME }}
           registry: ${{ env.REGISTRY }}
-          tags: latest
+          tags: ${{ env.VERSION }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
