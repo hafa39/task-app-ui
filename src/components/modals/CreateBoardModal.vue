@@ -99,7 +99,8 @@ export default {
       try {
         const response = await boardService.create(board)
         const createdBoard = response.data
-        this.$store.dispatch('addBoard ', createdBoard)
+        console.log(createdBoard)
+        this.$store.dispatch('addBoard', createdBoard)
         //this.$emit('created', createdBoard.id)
         this.close()
       }

@@ -22,7 +22,8 @@
     <v-list density="compact" nav>
       <v-list-item prepend-icon="mdi-home-city" title="Home" value="home" to="/"></v-list-item>
       <user-profile-modal v-on:updated="updateUserInfo" v-on:updateAvatar="updateAvatar"/>
-<!--      <v-list-item prepend-icon="mdi-folder" title="My Files" value="myfiles"></v-list-item>-->
+      <v-list-item prepend-icon="mdi-help-circle" title="Help" value="help" to="/help"></v-list-item>
+      <!--      <v-list-item prepend-icon="mdi-folder" title="My Files" value="myfiles"></v-list-item>-->
 <!--      <v-list-item prepend-icon="mdi-account-multiple" title="Shared with me" value="shared"></v-list-item>-->
 <!--      <v-list-item prepend-icon="mdi-star" title="Starred" value="starred"></v-list-item>-->
       <v-list-item prepend-icon="mdi-logout" title="Logout" value="logout" v-on:click="logout"></v-list-item>

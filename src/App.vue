@@ -1,7 +1,6 @@
 <template>
   <v-app>
     <page-header />
-    <side-navigation />
     <v-main>
       <router-view/>
     </v-main>
@@ -18,8 +17,17 @@ export default {
   name: 'App',
   components: {SideNavigation, PageHeader},
 
-  data: () => ({
-    //
-  }),
+  data() {
+    return {
+      isHelpPage: false // Initially, it's not a help page
+    };
+  },
+  watch: {
+    // Watch for route changes
+    $route(to, from) {
+      // Check if the route is for the help page
+      this.isHelpPage = to.name === 'help';
+    }
+  }
 }
 </script>

@@ -74,6 +74,7 @@
 import {mapGetters} from "vuex";
 import meService from "@/services/me"
 import cardService from "@/services/cards";
+import errorParser from "@/utils/error-parser";
 export default {
   name: "UserProfileModal",
   data(){
@@ -90,7 +91,7 @@ export default {
       meService.getUser().then(response =>{
             this.user = response.data})
     },
-    updateProfile () {
+    updateProfile2 () {
       meService.updateUserInfo(this.user
       ).then((user) => {
         if (this.avatar !== ""){
@@ -100,14 +101,39 @@ export default {
               .then(response =>{
                     let updatedAvatar = response.data
                     this.$emit('updateAvatar', updatedAvatar)
-              })
+              }).catch(error => console.log(error))
         }
         this.$emit('updated', this.user)
         this.close()
       }).catch(error => {
-        this.errorMessage = error.message
+        let err = errorParser.parse(error)
+        console.log(err)
+        this.errorMessage = err.message
       })
     },
+
+    async updateProfile (){
+      try {
+        await meService.updateUserInfo(this.user)
+      }catch (e) {
+        let err = errorParser.parse(e)
+        this.errorMessage = err.message
+      }
+
+      try {
+        if (this.avatar !== ""){
+          const formData = new FormData()
+          formData.append("file", this.avatar, this.avatar.name)
+          let response = await meService.createAvatar(formData)
+          let updatedAvatar = response.data
+          this.$emit('updateAvatar', updatedAvatar)
+        }
+      }catch (e) {
+        let err = errorParser.parse(e)
+        this.errorMessage = err.message
+      }
+    },
+
     close () {
       this.errorMessage = ''
       this.dialog = false

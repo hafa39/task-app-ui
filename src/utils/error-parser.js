@@ -15,6 +15,9 @@ export default {
         return new Error('Request not authorized.')
       } else if (status === 403) {
         return new Error('Request forbidden.')
+      }
+      else if (status === 413) {
+          return new Error('Upload file is to large.')
       } else if (status === 404) {
         return new Error('Request failed. Request endpoint not found on the server.')
       } else if (status === 500) {

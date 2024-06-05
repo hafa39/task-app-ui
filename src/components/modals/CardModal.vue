@@ -220,7 +220,9 @@ export default {
         } else if (activity.type === 'add-card') {
           actionDetail = 'Added this card'
         } else if (activity.type === 'add-attachment') {
-          actionDetail = 'Added attachment ' + detail.fileName
+          actionDetail = 'Added attachment ' + detail.fileName}
+          else if (activity.type === 'remove-attachment') {
+            actionDetail = 'Removed attachment ' + detail.fileName
         } else if (activity.type === 'change-card-description') {
           actionDetail = 'Changed card description'
         } else if (activity.type === 'change-card-title') {

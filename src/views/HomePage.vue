@@ -1,6 +1,9 @@
 <template>
+  <SideNavigation />
   <v-container fluid class=" blue-grey darken-4 mt-5 ">
-
+    <div>
+      <create-team-modal/>
+    </div>
     <v-container fluid class=" blue-grey darken-4 mt-5 ">
       <h2 class="mb-5 grey--text" > Personal Boards</h2>
       <v-row md = "2">
@@ -31,7 +34,7 @@
             <board-cart v-bind:board="board" v-on:openBoard = openBoard> </board-cart>
           </v-col>
           <v-col md = "2">
-            <create-board-modal v-bind:team-id="0"/>
+            <create-board-modal v-bind:team-id="team.id"/>
           </v-col>
         </v-row>
       </v-container>
@@ -44,11 +47,14 @@
 import BoardCart from "@/components/BoardCart.vue";
 import CreateBoardModal from "@/components/modals/CreateBoardModal.vue";
 import PageHeader from "@/components/PageHeader.vue";
+import SideNavigation from "@/components/SideNavigation.vue";
 import {mapGetters} from "vuex";
+import CreateTeamModal from "@/components/modals/CreateTeamModal.vue";
+
 
 export default {
 name: "HomePage",
-  components: {CreateBoardModal, BoardCart, PageHeader},
+  components: {SideNavigation, CreateTeamModal, CreateBoardModal, BoardCart, PageHeader},
 
   data () {
     return {

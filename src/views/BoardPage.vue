@@ -1,4 +1,5 @@
 <template>
+  <SideNavigation/>
   <div>
     <div class="board">
       <v-container>
