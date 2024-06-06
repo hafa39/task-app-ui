@@ -22,6 +22,6 @@ jobs:
         with:
           image: ${{ env.IMAGE_NAME }}
           registry: ${{ env.REGISTRY }}
-          tags: ${{ env.VERSION }}
+          tags: ${{ github.sha }}, latest
           username: ${{ secrets.GHCR_USERNAME }}
           password: ${{ secrets.GHCR_TOKEN }}
